@@ -10,38 +10,24 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace PasionTeaCompany
 {
     [TestClass]
-   public class WelcomeMoreFunction
+   public class WelcomeMoreFunction : BaseTest
     {
-        IWebDriver driver;
-        static string _expectedUrlMoreLinkFirst = "@http://www.practiceselenium.com/menu.html";
+        static string _expectedUrlMoreLinkFirst = "http://www.practiceselenium.com/menu.html";
         static string _expectedTitleMoreLinkSecond = "Menu";
 
-        [TestInitialize]
-        void Setup()
-        {
-            IWebDriver driver = new FirefoxDriver();
-            driver.Navigate().GoToUrl("http://www.practiceselenium.com/welcome.html");
-        }
-
-        [TestMethod]
-
+        [TestMethod()]
        public void OpenMoreLinkOne()
         {
             driver.FindElement(By.ClassName("editor_sidebarmore")).Click();
             Assert.AreEqual(_expectedUrlMoreLinkFirst, driver.Url, "Urls are not equal");
         }
 
-       [TestMethod]
-
+       [TestMethod()]
        public void OpenMoreLinkTwo()
         {
             driver.FindElement(By.ClassName("editor_sidebarmore")).Click();
             Assert.AreEqual(_expectedTitleMoreLinkSecond, driver.Title, "Titles are not equal");
         }
-       [TestCleanup]
-       void Cleanup()
-       {
-           driver.Quit();
-       }
+
     }
 }

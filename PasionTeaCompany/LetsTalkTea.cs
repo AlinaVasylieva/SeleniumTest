@@ -16,34 +16,34 @@ namespace PasionTeaCompany
     public class LetsTalkTeaTest : BaseTest
     {
         static string _expectedMessage = "Thank you sending us your information. We will get back to you with your Chai :)";
-   
 
-        [TestMethod]
+
+        [TestMethod()]
         public void FormSubmit()
         {
+            driver.Navigate().GoToUrl("http://www.practiceselenium.com/let-s-talk-tea.html");
+
             driver.FindElement(By.Name("name")).SendKeys("Alina");
             driver.FindElement(By.Name("email")).SendKeys("Amely1616@rambler.ru");
             driver.FindElement(By.Name("subject")).SendKeys("TeaPurchase");
             driver.FindElement(By.Name("message")).SendKeys("Test");
-            driver.FindElement(By.ClassName("form-submit")).Click();
+            driver.FindElement(By.XPath("//*[@id='form_78ea690540a24bd8b9dcfbf99e999fea']/div[1]/div[5]/input")).Click();
             
-            //Assert.AreEqual(_expectedMessage, driver.FindElement(By.Id(_expectedMessage)), "IDs are not equal");
-            
-            //Thread.Sleep(5000);
-            WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(4));
-
+            WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(5));
             IWebElement succesText = wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//*[@id='msg_78ea690540a24bd8b9dcfbf99e999fea']")));
             string actualText = succesText.Text;
+
             Assert.AreEqual(_expectedMessage, actualText, "IDs are not equal");
         }
 
-        public static Func<IWebDriver, IWebElement> ElementIsClickable(By locator)
-        {
-            return driver =>
-            {
-                var element = driver.FindElement(locator);
-                return (element != null && element.Displayed && element.Enabled) ? element : null;
-            };
-        }
+        //LAMBDA EXPRESSION EXAMPLE
+        //public static Func<IWebDriver, IWebElement> ElementIsClickable(By locator)
+        //{
+        //    return driver =>
+        //    {
+        //        var element = driver.FindElement(locator);
+        //        return (element != null && element.Displayed && element.Enabled) ? element : null;
+        //    };
+        //}
     }
 }

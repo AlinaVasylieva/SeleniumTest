@@ -58,10 +58,8 @@
   </Choose>
   <ItemGroup>
     <Compile Include="BaseTest.cs" />
-    <Compile Include="FlavoredTea.cs" />
+    <Compile Include="Menu.cs" />
     <Compile Include="LetsTalkTea.cs" />
-    <Compile Include="LooseTea.cs" />
-    <Compile Include="HerbalTea.cs" />
     <Compile Include="CheckOut.cs" />
     <Compile Include="WelcomeMoreFunction.cs" />
     <Compile Include="Welcome.cs" />
